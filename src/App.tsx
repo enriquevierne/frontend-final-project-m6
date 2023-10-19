@@ -1,7 +1,19 @@
-export default function App() {
+import { InputText } from "primereact/inputtext";
+
+const App = () => {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
-}
+    <>
+      <span className="p-input-icon-left h-10">
+        <i className="pi pi-search" />
+        <InputText placeholder="Search"/>
+      </span>
+
+      <span className="p-input-icon-right">
+        <i className="pi pi-spin pi-spinner" />
+        <InputText />
+      </span>
+    </>
+  );
+};
+
+export default App;
