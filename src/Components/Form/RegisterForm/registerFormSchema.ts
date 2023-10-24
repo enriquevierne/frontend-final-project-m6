@@ -29,12 +29,12 @@ export const registerFormSchema = z
         11,
         "O número de celular é obrigatório e precisa conter exatamente 11 caracteres."
       ),
-    birthdate: z.string().datetime({ message: "Precisa ser uma data válida." }),
+    birthdate: z.string(),
     bio: z
       .string()
       .min(1, "O campo é obrigatório")
       .max(255, "O campo precisa ter menos de 255 caracteres."),
-    type: z.boolean(),
+    type: z.boolean().optional(),
     address: z.object({
       zip: z.string().length(8, "O cep precisa conter 8 caracteres."),
       street: z.string().min(1, "A rua é obrigatória."),

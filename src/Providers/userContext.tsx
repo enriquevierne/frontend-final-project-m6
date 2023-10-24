@@ -58,7 +58,6 @@ interface IUserRegisterResponse {
 
 interface IUserLoginResponse {
   accessToken: string;
-  user: IUser;
 }
 
 export const UserContext = createContext({} as IUserContext);
@@ -72,10 +71,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       setLoading(true);
       const { data } = await api.post<IUserLoginResponse>("/login", formData);
-      localStorage.setItem("@TOKEN_KenzieBurguer", data.accessToken);
-      localStorage.setItem("@USERID_KenzieBurguer", data.user.id.toString());
-      toast.success("Login bem sucedido");
-      navigate("/shop");
+      localStorage.setItem("@TOKEN", data.accessToken);
+      navigate("/dashboard");
     } catch (error) {
       const Ierror = error as AxiosError;
       toast.error(Ierror.message);

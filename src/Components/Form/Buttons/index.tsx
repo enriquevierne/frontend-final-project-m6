@@ -6,7 +6,6 @@ interface ButtonDefaultProps {
 export const ButtonDefault = ({ label, style }: ButtonDefaultProps) => {
   return (
     <button
-      type="submit"
       className={style}
     >
       {label}
