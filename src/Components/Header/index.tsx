@@ -36,7 +36,7 @@ export const Header = () => {
           />
         )}
         {showMenu ? (
-          <div className="w-full top-20 left-0 bg-white flex flex-col lg:hidden border-b p-2 gap-4 absolute pointer-events-none">
+          <div className="w-full top-20 left-0 bg-white flex flex-col lg:hidden border-b p-2 gap-4 absolute">
             <a className="p-2 font-semibold text-gray-600" href="/login">
               Fazer login
             </a>
