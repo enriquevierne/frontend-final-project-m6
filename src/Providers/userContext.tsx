@@ -57,7 +57,7 @@ interface IUserRegisterResponse {
 }
 
 interface IUserLoginResponse {
-  accessToken: string;
+  token: string;
 }
 
 export const UserContext = createContext({} as IUserContext);
@@ -71,7 +71,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       setLoading(true);
       const { data } = await api.post<IUserLoginResponse>("/login", formData);
-      localStorage.setItem("@TOKEN", data.accessToken);
+      localStorage.setItem("@TOKEN", data.token);
       navigate("/dashboard");
     } catch (error) {
       const Ierror = error as AxiosError;
