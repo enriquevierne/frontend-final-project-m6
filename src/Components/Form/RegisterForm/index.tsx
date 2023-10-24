@@ -13,12 +13,10 @@ export const FormRegister = () => {
   const setTypeSeller = (e: FormEvent) => {
     e.preventDefault();
     setType("Anunciante");
-    console.log("Anunciante");
   };
   const setTypeBuyer = (e: FormEvent) => {
     e.preventDefault();
     setType("Comprador");
-    console.log("Comprador");
   };
 
   return (
