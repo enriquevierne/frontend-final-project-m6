@@ -7,7 +7,7 @@ interface LogoProps {
 
 export const Logo = ({ position }: LogoProps) => {
   return (
-    <>
+    <a href="/">
       {position == "header" ? (
         <>
           <img src={logoHeader} alt="" />
@@ -19,6 +19,6 @@ export const Logo = ({ position }: LogoProps) => {
           <img src={logoFooter} alt="" />
         </>
       ) : null}
-    </>
+    </a>
   );
 };

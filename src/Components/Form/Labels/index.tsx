@@ -3,5 +3,5 @@ interface InputLabelProps {
 }
 
 export const InputLabel = ({text}:InputLabelProps) => {
-    return <label htmlFor="">{text}</label>
+    return <label className="font-semibold tracking-wide" htmlFor="">{text}</label>
 }

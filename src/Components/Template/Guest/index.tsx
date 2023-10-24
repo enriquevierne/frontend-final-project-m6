@@ -6,7 +6,7 @@ export const GuestTemplate = ({
   children,
 }: PropsTemplate) => {
   return (
-    <main className="scroll-smooth">
+    <main className="bg-grey2">
       <Header />
       <div className="">{children}</div>
       <Footer />
