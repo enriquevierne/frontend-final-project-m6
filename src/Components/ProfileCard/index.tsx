@@ -1,5 +1,3 @@
-import { IUserAnoucement } from "../../Providers/anouncementContext";
-
 interface ProfileCardProps {
   user: {
     name: string | undefined,

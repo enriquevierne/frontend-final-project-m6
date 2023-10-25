@@ -5,12 +5,12 @@ import { AuthenticatedTemplate } from "../../Components/Template/Authenticated";
 import { AnouncementContext } from "../../Providers/anouncementContext";
 
 export const DashboardPage = () => {
-  const { anouncementList } = useContext(AnouncementContext);
-  const username = anouncementList?.name;
+  const { anouncementUserList } = useContext(AnouncementContext);
+  const username = anouncementUserList?.name;
   const user = {
-    name: anouncementList?.name,
-    bio: anouncementList?.bio,
-    type: anouncementList?.type,
+    name: anouncementUserList?.name,
+    bio: anouncementUserList?.bio,
+    type: anouncementUserList?.type,
   };
   return (
     <AuthenticatedTemplate>
@@ -21,7 +21,7 @@ export const DashboardPage = () => {
             Anúncios
           </p>
           <ul className="m-auto flex gap-6 overflow-x-auto lg:flex-wrap lg:justify-center">
-            {anouncementList?.anouncements.map((anouncement) => (
+            {anouncementUserList?.anouncements.map((anouncement) => (
               <CardProduct
                 key={anouncement.id}
                 anouncement={anouncement}
