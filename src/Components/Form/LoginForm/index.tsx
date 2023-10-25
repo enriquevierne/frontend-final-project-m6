@@ -22,8 +22,6 @@ export const FormLogin = () => {
     userLogin(formData, setLoading);
   };
 
-  console.log(errors);
-  
   return (
     <div className="w-11/12 max-w-[412px] m-auto py-12 px-11 bg-grey0 flex flex-col gap-8 rounded-md">
       <h2 className="text-2xl font-bold">Login</h2>

@@ -1,6 +1,6 @@
 export const CardProduct = () => {
   return (
-    <div className="w-[312px] lg:w-full lg:max-w-[312px] lg:col-span-4 flex flex-col gap-2">
+    <div className="min-w-[295px] lg:w-full lg:max-w-[312px] lg:col-span-4 flex flex-col gap-2">
       <div className="w-full h-[150px] bg-[url('./assets/main-banner.png')] bg-cover bg-no-repeat">
         
       </div>

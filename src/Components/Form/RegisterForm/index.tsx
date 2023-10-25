@@ -29,13 +29,9 @@ export const FormRegister = () => {
   };
 
   const submit: SubmitHandler<TRegisterFormValues> = (formData) => {
-    console.log(formData);
-    
     userRegister(formData, setLoading);
     
   };
-
-  console.log(errors)
 
   return (
     <div className="w-11/12 max-w-[411px] m-auto py-12 px-11 bg-grey0 flex flex-col gap-8 rounded-md">
