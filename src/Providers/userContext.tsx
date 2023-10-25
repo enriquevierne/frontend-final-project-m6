@@ -61,6 +61,7 @@ interface IUserLoginResponse {
   token: string;
   user: string;
   type: string;
+  id: string;
 }
 
 export const UserContext = createContext({} as IUserContext);
@@ -77,6 +78,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       localStorage.setItem("@TOKEN", data.token);
       localStorage.setItem("@USER", data.user);
       localStorage.setItem("@TYPE", data.type);
+      localStorage.setItem("@ID", data.id);
       navigate("/dashboard");
     } catch (error) {
       const Ierror = error as AxiosError;
@@ -108,6 +110,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     localStorage.removeItem("@TOKEN");
     localStorage.removeItem("@USER");
     localStorage.removeItem("@TYPE");
+    localStorage.removeItem("@ID");
     navigate("/");
   };
   return (
