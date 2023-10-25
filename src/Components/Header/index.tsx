@@ -15,7 +15,7 @@ export const Header = () => {
     name: localStorage.getItem("@USER"),
     type: localStorage.getItem("@TYPE"),
   };
-
+ 
   return (
     <header
       id="header"
@@ -23,7 +23,7 @@ export const Header = () => {
     >
       <div className="w-full max-w-7xl flex justify-between items-center">
         <Logo position="header" />
-        {user ? (
+        {user.name ? (
           <button
             onClick={() => setShowMenu(!showMenu)}
             className="hidden lg:flex items-center gap-2"

@@ -29,6 +29,7 @@ export const FormLogin = () => {
         <div className="flex flex-col gap-1 col-span-12">
           <InputLabel text="Nome" />
           <input
+            className="p-2 h-12 rounded-md bg-transparent outline-none border-2 border-grey4 text-gray-900  focus:border-brand1"
             {...register("email")}
             disabled={loading}
             type="text"
@@ -39,6 +40,7 @@ export const FormLogin = () => {
         <div className="flex flex-col gap-1 col-span-12">
           <InputLabel text="Email" />
           <input
+            className="p-2 h-12 rounded-md bg-transparent outline-none border-2 border-grey4 text-gray-900  focus:border-brand1"
             {...register("password")}
             disabled={loading}
             type="password"
@@ -46,7 +48,7 @@ export const FormLogin = () => {
           />
           {errors && <InputError error={errors.password} />}
         </div>
-        <div className="col-span-12 text-right font-semibold">
+        <div className="col-span-12 text-right text-sm text-grey7 font-medium tracking-wide">
           <span>Esqueci minha senha</span>
         </div>
         <div className="col-span-12 flex flex-col gap-6 text-center">

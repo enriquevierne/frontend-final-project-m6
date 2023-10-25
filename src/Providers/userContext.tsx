@@ -19,7 +19,8 @@ interface IUserProviderProps {
 interface IUserContext {
   userRegister: (
     formData: TRegisterFormValues,
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    setModal: React.Dispatch<React.SetStateAction<boolean>>
   ) => Promise<void>;
   userLogin: (
     formData: TLoginFormValues,
@@ -87,13 +88,14 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   const userRegister = async (
     formData: TRegisterFormValues,
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    setModal: React.Dispatch<React.SetStateAction<boolean>>
   ) => {
     try {
       setLoading(true);
       await api.post<IUserRegisterResponse>("/users", formData);
-      toast.success("Usuário cadastrado");
-      navigate("/");
+      setModal(true)
+      window.scroll({top: 0, left: 0})
     } catch (error) {
       const Ierror = error as AxiosError;
       toast.error(Ierror.message);
