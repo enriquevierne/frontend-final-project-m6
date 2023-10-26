@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AuthenticatedTemplate } from "../../Components/Template/Authenticated";
-import cover from "../../assets/main-banner.png";
+import cover from "../../assets/anouncement.png";
 import { IAnouncement } from "../../Providers/anouncementContext";
 import { ButtonDefault } from "../../Components/Form/Buttons";
 import { CardComment } from "../../Components/Comments/CardComment";
@@ -72,13 +72,13 @@ export const AnouncementPage = () => {
 
   return (
     <AuthenticatedTemplate>
-      <div className="w-full m-auto flex flex-col justify-center bg-gradient-to-b from-brand1 from-40%  to-grey2 to-40% pt-20 pb-80">
+      <div className="w-full m-auto flex flex-col rounded justify-center bg-gradient-to-b from-brand1 from-40%  to-grey2 to-40% pt-20 pb-80">
         <div className="w-full max-w-[1238px] m-auto flex gap-8">
           <div className="">
-            <div className="h-[355px] max-w-[752px]">
+            <div className="h-[355px] min-w-[752px] flex justify-center items-center bg-grey2  rounded-sm">
               <img src={cover} alt="" className="h-full" />
             </div>
-            <div className="m-auto px-11 py-7 flex flex-col gap-8 bg-grey1 mt-4 text-lg font-bold">
+            <div className="m-auto px-11 py-7 flex flex-col gap-8 bg-grey1 mt-4 text-lg font-bold rounded-sm">
               <p>
                 {anouncement?.brand}-{anouncement?.car}
               </p>
@@ -110,34 +110,34 @@ export const AnouncementPage = () => {
               </p>
             </div>
           </div>
-          <div className="max-w-[440px] flex flex-col gap-4">
-            <div className="w-full bg-grey1 py-9 px-11 ">
+          <div className="max-w-[440px] flex flex-col gap-4 rounded-sm">
+            <div className="w-full bg-grey1 py-9 px-11  rounded-sm">
               <span className="w-full font-bold text-lg text-grey8 tracking-wider">
                 Fotos
               </span>
-              <ul className="grid grid-cols-9 gap-2 mt-8">
-                <li className="col-span-3">
-                  <img src={cover} alt="" className="w-28 h-28 rounded-sm" />
+              <ul className="grid grid-cols-9 gap-4 mt-8">
+                <li className="col-span-3 bg-grey4 p-2 rounded-sm">
+                  <img src={cover} alt="" className="" />
                 </li>
-                <li className="col-span-3">
-                  <img src={cover} alt="" className="w-28 h-28 rounded-sm" />
+                <li className="col-span-3 bg-grey4 p-2 rounded-sm">
+                  <img src={cover} alt="" className="" />
                 </li>
-                <li className="col-span-3">
-                  <img src={cover} alt="" className="w-28 h-28 rounded-sm" />
+                <li className="col-span-3 bg-grey4 p-2 rounded-sm">
+                  <img src={cover} alt="" className="" />
                 </li>
-                <li className="col-span-3">
-                  <img src={cover} alt="" className="w-28 h-28 rounded-sm" />
+                <li className="col-span-3 bg-grey4 p-2 rounded-sm">
+                  <img src={cover} alt="" className="" />
                 </li>
-                <li className="col-span-3">
-                  <img src={cover} alt="" className="w-28 h-28 rounded-sm" />
+                <li className="col-span-3 bg-grey4 p-2 rounded-sm">
+                  <img src={cover} alt="" className="" />
                 </li>
-                <li className="col-span-3">
-                  <img src={cover} alt="" className="w-28 h-28 rounded-sm" />
+                <li className="col-span-3 bg-grey4 p-2 rounded-sm">
+                  <img src={cover} alt="" className="" />
                 </li>
               </ul>
             </div>
             <div>
-              <div className="max-w-[1240px] flex flex-col justify-center items-center gap-6 m-auto bg-grey0 p-10">
+              <div className="max-w-[1240px] flex flex-col justify-center items-center gap-6 m-auto bg-grey0 p-10  rounded-sm">
                 <span className="w-28 h-28 rounded-full bg-brand1 text-gray-100 text-[52px] font-semibold flex items-center justify-center">
                   {anouncement?.user.name[0]}
                   {anouncement?.user.name[1]}
@@ -147,7 +147,7 @@ export const AnouncementPage = () => {
                     {anouncement?.user.name}
                   </span>
                 </div>
-                <div className="w-full text-center">
+                <div className="w-full text-center rounded-sm">
                   <p className="text-gray-700 tracking-wide">
                     {anouncement?.user.bio}
                   </p>
@@ -161,7 +161,7 @@ export const AnouncementPage = () => {
           </div>
         </div>
         <div className="w-full max-w-[1238px] m-auto flex">
-          <ul className="w-full bg-grey1 max-w-[752px] flex gap-8 mt-8  px-11 py-7">
+          <ul className="w-full bg-grey1 max-w-[752px] flex gap-8 mt-8  px-11 py-7 rounded-sm">
             {listComments?.map((comment) => (
               <CardComment comment={comment} />
             ))}
