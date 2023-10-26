@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Logo } from "../Logo";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import { UserContext } from "../../Providers/userContext";
+import { Link } from "react-router-dom";
 
 interface UserLocalStorage {
   name: string | null;
@@ -35,15 +36,15 @@ export const Header = () => {
           </button>
         ) : (
           <div className="hidden lg:flex items-center border-l p-2 gap-4">
-            <a className="p-2 font-semibold text-gray-600" href="/login">
+            <Link className="p-2 font-semibold text-gray-600" to="/login">
               Fazer login
-            </a>
-            <a
+            </Link>
+            <Link
               className="py-2 px-4 font-semibold text-gray-950 border rounded-md hover:bg-gray-200 duration-300 ease-in-out"
-              href="/register"
+              to="/register"
             >
               Cadastrar
-            </a>
+            </Link>
           </div>
         )}
         {!showMenu ? (

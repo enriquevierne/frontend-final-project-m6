@@ -35,6 +35,7 @@ export interface IAnouncement {
   updatedAt: string;
   deletedAt: string | null;
   images: IAnouncementImage[];
+  user: IUser;
 }
 
 export interface IAllAnouncement {
@@ -71,49 +72,29 @@ export interface IUserAnoucement {
   anouncements: IAnouncement[];
 }
 
-export interface IAnoucementContext {
-  anouncementUserList: IUserAnoucement | undefined;
-  loadAnouncementUserList: () => void;
-
+export interface IAnouncementContext {
+  anouncementList: IAllAnouncement[] | undefined;
 }
 
-export const AnouncementContext = createContext({} as IAnoucementContext);
+export const AnouncementContext = createContext({} as IAnouncementContext);
 
 export const AnoucementProvider = ({ children }: IAnouncementProviderProps) => {
-  const [anouncementUserList, setAnouncementUserList] = useState<IUserAnoucement>();
-  const [anouncementList, setAnouncementList] = useState<IAllAnoucement[]>();
-
-  const loadAnouncementUserList = async () => {
-    const id = localStorage.getItem("@ID");
-    try {
-      const { data } = await api.get<IUserAnoucement>(
-        `/anouncements/users/${id}`
-      );
-      setAnouncementList(data);
-    } catch (error) {
-      const Ierror = error as AxiosError;
-      toast.error(Ierror.message);
-    }
-  };
-
-  useEffect(()=>{
+  const [anouncementList, setAnouncementList] = useState<IAllAnouncement[]>();
+  useEffect(() => {
     const loadAnouncementList = async () => {
       try {
-        const { data } = await api.get<IAllAnouncement[]>(
-          `/anouncements`
-        );
+        const { data } = await api.get<IAllAnouncement[]>(`/anouncements`);
         setAnouncementList(data);
       } catch (error) {
         const Ierror = error as AxiosError;
         toast.error(Ierror.message);
       }
     };
-  })
+    loadAnouncementList();
+  }, []);
 
   return (
-    <AnouncementContext.Provider
-      value={{ anouncementUserList, loadAnouncementUserList }}
-    >
+    <AnouncementContext.Provider value={{ anouncementList }}>
       {children}
     </AnouncementContext.Provider>
   );

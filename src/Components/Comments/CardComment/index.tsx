@@ -1,6 +1,14 @@
-export const CardComment = () => {
+import { IComment } from "../../../Pages/Anouncement";
+
+interface CommentsProps {
+  comment: IComment;
+}
+
+export const CardComment = ({comment}: CommentsProps) => {
+  console.log(comment);
+  
   return (
-    <div className="w-11/12 max-w-[663px] flex flex-col gap-2">
+    <li className="w-11/12 max-w-[663px] flex flex-col gap-2">
       <div className="flex items-center gap-2">
         <span className="p-1 rounded-full bg-green-800">CS</span>
         <span className="text-gray-900 font-semibold">Camila Silva</span>
@@ -15,6 +23,6 @@ export const CardComment = () => {
           in, repudiandae neque.
         </p>
       </div>
-    </div>
+    </li>
   );
 };
