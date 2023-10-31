@@ -35,7 +35,7 @@ A URL do repositório backend:
 https://github.com/enriquevierne/fullstack-final-project-m6
 
 A URL base da aplicação:
-http://localhost:3000/api
+http://localhost:5173/
 
 ---
 
