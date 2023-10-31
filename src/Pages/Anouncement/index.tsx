@@ -3,39 +3,13 @@ import { AuthenticatedTemplate } from "../../Components/Template/Authenticated";
 import cover from "../../assets/anouncement.png";
 import { IAnouncement } from "../../Providers/anouncementContext";
 import { ButtonDefault } from "../../Components/Form/Buttons";
-import { CardComment } from "../../Components/Comments/CardComment";
 import { api } from "../../Service/api";
 import { AxiosError } from "axios";
 import { useLocation, useParams } from "react-router";
-
-interface ICommentAnouncement {
-  id: number;
-  brand: string;
-  car: string;
-  year: number;
-  fuel: string;
-  kilometers: number;
-  color: string;
-  fipe: string;
-  price: string;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: string | null;
-  comments: IComment[];
-}
-
-export interface IComment {
-  id: number;
-  comment_text: string;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: string | null;
-}
+import { Comments } from "../../Components/Comments";
 
 export const AnouncementPage = () => {
   const [anouncement, setAnouncement] = useState<IAnouncement>();
-  const [listComments, setListComments] = useState<IComment[]>([]);
   const { id } = useParams();
   const { pathname } = useLocation();
 
@@ -45,37 +19,25 @@ export const AnouncementPage = () => {
       left: 0,
       behavior: "smooth",
     });
-    const loadComments = async () => {
-      try {
-        const { data } = await api.get<ICommentAnouncement>(
-          `/anouncements/${anouncement?.id}/comments/`
-        );
-        setListComments(data.comments);
-      } catch (error) {
-        const Ierror = error as AxiosError;
-        console.log(Ierror);
-      }
-    };
+
     const retrieveAnouncement = async (id: string | undefined) => {
       try {
         const { data } = await api.get<IAnouncement>(`/anouncements/${id}`);
         setAnouncement(data);
       } catch (error) {
         const Ierror = error as AxiosError;
-        console.log(Ierror);
+        console.log(Ierror)
       }
     };
     retrieveAnouncement(id);
-    loadComments();
   }, [pathname]);
-  console.log(listComments);
 
   return (
     <AuthenticatedTemplate>
       <div className="w-full m-auto flex flex-col rounded justify-center bg-gradient-to-b from-brand1 from-40%  to-grey2 to-40% pt-20 pb-80">
-        <div className="w-full max-w-[1238px] m-auto flex gap-8">
+        <div className="w-full max-w-[1238px] m-auto flex flex-col gap-8">
           <div className="">
-            <div className="h-[355px] min-w-[752px] flex justify-center items-center bg-grey2  rounded-sm">
+            <div className="h-[355px] lg:min-w-[752px] flex justify-center items-center bg-grey2  rounded-sm">
               <img src={cover} alt="" className="h-full" />
             </div>
             <div className="m-auto px-11 py-7 flex flex-col gap-8 bg-grey1 mt-4 text-lg font-bold rounded-sm">
@@ -161,11 +123,7 @@ export const AnouncementPage = () => {
           </div>
         </div>
         <div className="w-full max-w-[1238px] m-auto flex">
-          <ul className="w-full bg-grey1 max-w-[752px] flex gap-8 mt-8  px-11 py-7 rounded-sm">
-            {listComments?.map((comment) => (
-              <CardComment comment={comment} />
-            ))}
-          </ul>
+          <Comments anouncement={anouncement} />
         </div>
       </div>
     </AuthenticatedTemplate>
