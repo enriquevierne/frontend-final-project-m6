@@ -44,7 +44,7 @@ export const CreateComment = ({ user, id }: CreateCommentProps) => {
       const Ierror = error as AxiosError;
       console.log(Ierror);
     } finally {
-      navigate(`/anouncements/${id}`);
+      window.location.reload()
     }
   };
   const submit: SubmitHandler<TCommentFormValues> = (formData) => {

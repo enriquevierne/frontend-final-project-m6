@@ -33,9 +33,14 @@ export const AnouncementPage = () => {
     retrieveAnouncement(id);
   }, [pathname]);
 
+  const priceFormatted = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(anouncement?.price)
+
   return (
     <AuthenticatedTemplate>
-      <div className="w-full m-auto flex flex-col rounded bg-gradient-to-b from-brand1 from-40%  to-grey2 to-40% pt-20 pb-80 p-2">
+      <div className="w-full m-auto flex flex-col rounded bg-gradient-to-b from-brand1 from-[270px]  to-grey2 to-[270px] pt-20 pb-80 p-2">
         <div className="w-full max-w-[1238px] m-auto flex flex-col lg:flex-row gap-8">
           <div className="">
             <div className="h-[355px] lg:min-w-[752px] flex items-center bg-grey2  rounded-sm">
@@ -52,7 +57,7 @@ export const AnouncementPage = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="p-1 rounded-md bg-brand4 text-brand1 font-semibold text-sm">
-                    {anouncement?.kilometers}
+                    {new Intl.NumberFormat('pt-BR').format(anouncement?.kilometers)}
                     KM
                   </span>
                   <span className="p-1 rounded-md bg-brand4 text-brand1 font-semibold text-sm">
@@ -60,7 +65,7 @@ export const AnouncementPage = () => {
                   </span>
                 </div>
                 <span className="text-lg font-bold tracking-wide">
-                  {anouncement?.price}
+                  {priceFormatted}
                 </span>
               </div>
               <ButtonDefault
