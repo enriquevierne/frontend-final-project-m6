@@ -23,17 +23,14 @@ interface ICommentAnouncement {
   comments: IComment[];
 }
 
-interface CommentsProps {
-  anouncement: IAnouncement | undefined;
-}
-
-export const Comments = ({ anouncement }: CommentsProps) => {
+export const Comments = () => {
   const [listComments, setListComments] = useState<IComment[]>([]);
+  const { id } = useParams();
   useEffect(() => {
     const loadComments = async () => {
       try {
         const { data } = await api.get<ICommentAnouncement>(
-          `/anouncements/${anouncement?.id}/comments/`
+          `/anouncements/${id}/comments/`
         );
         setListComments(data.comments);
       } catch (error) {
@@ -42,14 +39,13 @@ export const Comments = ({ anouncement }: CommentsProps) => {
       }
     };
     loadComments();
-  });
-  const { id } = useParams();
-  console.log(id);
+  },[]);
+  
 
   return (
-    <ul className="w-full bg-grey1 max-w-[752px] flex gap-8 mt-8  px-11 py-7 rounded-sm">
+    <ul className="w-full bg-grey1 max-w-[752px] flex flex-col gap-11 mt-8  px-11 py-7 rounded-sm">
   {listComments?.map((comment) => (
-    <CardComment comment={comment} />
+    <CardComment key={comment.id} comment={comment} />
   ))}
 </ul>
   );

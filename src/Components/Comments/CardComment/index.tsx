@@ -33,10 +33,7 @@ export const CardComment = ({ comment }: CommentsProps) => {
       </div>
       <div className="w-full">
         <p className="text-gray-800">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci
-          sequi culpa quaerat excepturi magnam consectetur esse facere eaque cum
-          deleniti, impedit dignissimos aperiam tenetur illum inventore itaque
-          in, repudiandae neque.
+          {comment.comment_text}
         </p>
       </div>
     </li>

@@ -123,7 +123,7 @@ export const AnouncementPage = () => {
           </div>
         </div>
         <div className="w-full max-w-[1238px] m-auto flex">
-          <Comments anouncement={anouncement} />
+          <Comments />
         </div>
       </div>
     </AuthenticatedTemplate>
