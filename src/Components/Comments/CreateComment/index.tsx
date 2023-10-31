@@ -2,13 +2,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { IUser } from "../../../Providers/userContext";
 import { ButtonDefault } from "../../Form/Buttons";
 import { InputError } from "../../Form/Errors";
-import { InputLabel } from "../../Form/Labels";
 import { api } from "../../../Service/api";
-import { toast } from "react-toastify";
-import { Axios, AxiosError } from "axios";
 import { IComment } from "../CardComment";
 import { TCommentFormValues } from "./commentFormSchema";
-import { useNavigate } from "react-router-dom";
+import { AxiosError } from "axios";
 
 interface CreateCommentProps {
   user: IUser | undefined;
@@ -20,7 +17,6 @@ interface BodyComment {
 }
 
 export const CreateComment = ({ user, id }: CreateCommentProps) => {
-  const navigate = useNavigate();
   const token = localStorage.getItem("@TOKEN");
   const {
     register,
@@ -42,7 +38,6 @@ export const CreateComment = ({ user, id }: CreateCommentProps) => {
       console.log(data);
     } catch (error) {
       const Ierror = error as AxiosError;
-      console.log(Ierror);
     } finally {
       window.location.reload()
     }

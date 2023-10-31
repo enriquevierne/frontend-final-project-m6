@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { AuthenticatedTemplate } from "../../Components/Template/Authenticated";
-import cover from "../../assets/anouncement.png";
 import { IAnouncement } from "../../Providers/anouncementContext";
 import { ButtonDefault } from "../../Components/Form/Buttons";
 import { api } from "../../Service/api";
