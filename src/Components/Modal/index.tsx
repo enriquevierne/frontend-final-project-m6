@@ -1,8 +1,6 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { ButtonDefault } from "../Form/Buttons";
 
-
-
 export const Modal = ({setModal}) => {
   return (
     <div className="w-full h-full absolute top-0 left-0 backdrop-opacity-20 backdrop-invert bg-black/60">

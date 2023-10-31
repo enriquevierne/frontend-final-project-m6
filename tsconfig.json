@@ -16,7 +16,7 @@
     "noEmit": true,
     "allowImportingTsExtensions": true,
     "jsx": "react-jsx",
-    "noImplicitAny": false
+    "noImplicitAny": true
   },
   "include": ["src", "src/declarations.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

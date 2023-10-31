@@ -7,6 +7,7 @@ import { api } from "../../Service/api";
 import { AxiosError } from "axios";
 import { useLocation, useParams } from "react-router";
 import { Comments } from "../../Components/Comments";
+import { CreateComment } from "../../Components/Comments/CreateComment";
 
 export const AnouncementPage = () => {
   const [anouncement, setAnouncement] = useState<IAnouncement>();
@@ -26,7 +27,7 @@ export const AnouncementPage = () => {
         setAnouncement(data);
       } catch (error) {
         const Ierror = error as AxiosError;
-        console.log(Ierror)
+        console.log(Ierror);
       }
     };
     retrieveAnouncement(id);
@@ -34,11 +35,15 @@ export const AnouncementPage = () => {
 
   return (
     <AuthenticatedTemplate>
-      <div className="w-full m-auto flex flex-col rounded justify-center bg-gradient-to-b from-brand1 from-40%  to-grey2 to-40% pt-20 pb-80">
-        <div className="w-full max-w-[1238px] m-auto flex flex-col gap-8">
+      <div className="w-full m-auto flex flex-col rounded bg-gradient-to-b from-brand1 from-40%  to-grey2 to-40% pt-20 pb-80 p-2">
+        <div className="w-full max-w-[1238px] m-auto flex flex-col lg:flex-row gap-8">
           <div className="">
-            <div className="h-[355px] lg:min-w-[752px] flex justify-center items-center bg-grey2  rounded-sm">
-              <img src={cover} alt="" className="h-full" />
+            <div className="h-[355px] lg:min-w-[752px] flex items-center bg-grey2  rounded-sm">
+              {anouncement?.images.map((image) => (
+                <>
+                  <img src={image.is_cover ? image.image_url : ''} alt="" className="" />
+                </>
+              ))}
             </div>
             <div className="m-auto px-11 py-7 flex flex-col gap-8 bg-grey1 mt-4 text-lg font-bold rounded-sm">
               <p>
@@ -78,24 +83,13 @@ export const AnouncementPage = () => {
                 Fotos
               </span>
               <ul className="grid grid-cols-9 gap-4 mt-8">
-                <li className="col-span-3 bg-grey4 p-2 rounded-sm">
-                  <img src={cover} alt="" className="" />
-                </li>
-                <li className="col-span-3 bg-grey4 p-2 rounded-sm">
-                  <img src={cover} alt="" className="" />
-                </li>
-                <li className="col-span-3 bg-grey4 p-2 rounded-sm">
-                  <img src={cover} alt="" className="" />
-                </li>
-                <li className="col-span-3 bg-grey4 p-2 rounded-sm">
-                  <img src={cover} alt="" className="" />
-                </li>
-                <li className="col-span-3 bg-grey4 p-2 rounded-sm">
-                  <img src={cover} alt="" className="" />
-                </li>
-                <li className="col-span-3 bg-grey4 p-2 rounded-sm">
-                  <img src={cover} alt="" className="" />
-                </li>
+                {anouncement?.images.map((image) => (
+                  <>
+                    <li className="col-span-3 bg-grey4 p-2 rounded-sm">
+                      <img src={image.image_url} alt="" className="" />
+                    </li>
+                  </>
+                ))}
               </ul>
             </div>
             <div>
@@ -122,8 +116,9 @@ export const AnouncementPage = () => {
             </div>
           </div>
         </div>
-        <div className="w-full max-w-[1238px] m-auto flex">
+        <div className="w-full max-w-[1238px] m-auto flex flex-col  gap-8">
           <Comments />
+          <CreateComment user={anouncement?.user} id={anouncement?.id} />
         </div>
       </div>
     </AuthenticatedTemplate>

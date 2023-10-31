@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
 import { api } from "../../Service/api";
 import { CardComment, IComment } from "./CardComment";
-import { IAnouncement } from "../../Providers/anouncementContext";
 
 interface ICommentAnouncement {
   id: number;
